@@ -1,8 +1,5 @@
-# project/forms.py
-
-
 from flask_wtf import Form
-from wtforms import StringField, DateField, IntegerField, \
+from wtforms import StringField, DateField, IntegerField,\
     SelectField, PasswordField
 from wtforms.validators import DataRequired, Length, EqualTo
 
@@ -16,7 +13,7 @@ class AddTaskForm(Form):
     )
     priority = SelectField(
         'Priority',
-        validators=[DataRequired()],
+        validators = [DataRequired()],
         choices=[
             ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'), ('5', '5'),
             ('6', '6'), ('7', '7'), ('8', '8'), ('9', '9'), ('10', '10')
@@ -27,28 +24,33 @@ class AddTaskForm(Form):
 
 class RegisterForm(Form):
     name = StringField(
-        'Username',
-        validators=[DataRequired(), Length(min=6, max=25)]
+            'Username',
+            validators=[DataRequired(), Length(min=6, max=25)]
     )
+
     email = StringField(
-        'Email',
-        validators=[DataRequired(), Length(min=6, max=40)]
+            'Email',
+            validators=[DataRequired(), Length(min=6, max=40)]
     )
+
     password = PasswordField(
-        'Password',
-        validators=[DataRequired(), Length(min=6, max=40)])
+            'Password',
+            validators=[DataRequired(), Length(min=6, max=40)]
+    )
     confirm = PasswordField(
-        'Repeat Password',
-        validators=[DataRequired(), EqualTo('password', message='Passwords must match')]
+            'Repeat Password',
+            validators=[DataRequired(), EqualTo('password', message='Password must match')]
     )
 
 
 class LoginForm(Form):
+
     name = StringField(
-        'Username',
-        validators=[DataRequired()]
+            'Username',
+            validators=[DataRequired()]
     )
+
     password = PasswordField(
-        'Password',
-        validators=[DataRequired()]
+            'Password',
+            validators=[DataRequired()]
     )

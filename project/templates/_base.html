@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Welcome to FlaskTaskr!!</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    </head>
-    <body>
-        <div class="page"
+  <head>
+    <title>Welcome to FlaskTaskr!!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  </head>
+  <body>
+    <div class="page">
 
-            {% for message in get_flashed_messages()%}
-             <div class="flash">{{ message }} </div>
-            {% endfor %}
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
 
-            {% if error %}
-             <div class="error"><strong>Error:</strong> {{ error }}  </div>
-            {% endif %}
+      {% if error %}
+        <div class="error"><strong>Error:</strong> {{ error }}</div>
+      {% endif %}
 
-            <br>
+      <br>
 
-            {% block content %}
-            {% endblock %}
-        </div>
-    </body>
-</htm>
+      {% block content %}
+      {% endblock %}
+
+    </div>
+  </body>
+</html>

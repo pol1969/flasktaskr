@@ -1,13 +1,11 @@
-# project/models.py
+# projekt/models.py
 
 
 from views import db
-
 import datetime
 
 
 class Task(db.Model):
-
     __tablename__ = "tasks"
 
     task_id = db.Column(db.Integer, primary_key=True)
@@ -26,12 +24,12 @@ class Task(db.Model):
         self.status = status
         self.user_id = user_id
 
+
     def __repr__(self):
         return '<name {0}>'.format(self.name)
 
 
 class User(db.Model):
-
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -40,10 +38,12 @@ class User(db.Model):
     password = db.Column(db.String, nullable=False)
     tasks = db.relationship('Task', backref='poster')
 
+
     def __init__(self, name=None, email=None, password=None):
         self.name = name
         self.email = email
         self.password = password
+
 
     def __repr__(self):
         return '<User {0}>'.format(self.name)
